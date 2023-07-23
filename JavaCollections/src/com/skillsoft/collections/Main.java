@@ -1,41 +1,75 @@
 package com.skillsoft.collections;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Product phone = new Product("iPhone", "Electronics");
-        Product tv = new Product("Samsung", "Electronics");
-        Product shoes = new Product("Nike", "Footwear");
-        Product printer = new Product("Epson", "Computer Accessories");
+        Integer[] integersArray = new Integer[] {3300, 400, 100, 700, 900, 600};
 
-        Set<Product> productSet = new HashSet<>();
+        Set<Integer> treeSet = new TreeSet<>(Arrays.asList(integersArray));
 
-        productSet.add(phone);
-        productSet.add(tv);
-        productSet.add(shoes);
-        productSet.add(printer);
+        System.out.println("\nOrder of integers in a TreeSet (natural order)");
 
-        System.out.println(productSet);
+        for (Integer integer : treeSet) {
+            System.out.println(integer);
+        }
 
-        System.out.println();
+        treeSet.add(null); // java.lang.NullPointerException
 
-        System.out.println("***** add another iPhone with the same parameters");
+//        String[] carsArray = new String[] {"Volvo", "BMW", "Honda", "Audi", "Mercedes"};
+//
+//        Set<String> hashSet = new HashSet<>(Arrays.asList(carsArray));
+//        Set<String> linkedHashSet = new LinkedHashSet<>(Arrays.asList(carsArray));
+//        Set<String> treeSet = new TreeSet<>(Arrays.asList(carsArray));
+//
+//        System.out.println("Order of car names in a HashSet (random order)");
+//
+//        for (String name : hashSet) {
+//            System.out.println(name);
+//        }
+//
+//        System.out.println("\nOrder of car names in a LinkedHashSet (insertion order)");
+//
+//        for (String name : linkedHashSet) {
+//            System.out.println(name);
+//        }
+//
+//        System.out.println("\nOrder of car names in a TreeSet (natural order)");
+//
+//        for (String name : treeSet) {
+//            System.out.println(name);
+//        }
 
-        Product anotherPhone = new Product("iPhone", "Electronics");
-
-        productSet.add(anotherPhone);
-
-        System.out.println(productSet);
-
-        System.out.println();
-
-        System.out.println("phone.equals(anotherPhone): " + phone.equals(anotherPhone));
-        System.out.println("phone.hashCode(): " + phone.hashCode());
-        System.out.println("anotherPhone.hashCode(): " + anotherPhone.hashCode());
+//        Set<String> hashSet = new HashSet<>();
+//
+//        System.out.println("hashSet instanceof HashSet " + (hashSet instanceof HashSet));
+//        System.out.println("hashSet instanceof Set " + (hashSet instanceof Set));
+//        System.out.println("hashSet instanceof Collection " + (hashSet instanceof Collection));
+//        System.out.println("hashSet instanceof Iterable " + (hashSet instanceof Iterable));
+//
+//        System.out.println();
+//
+//        Set<String> linkedHashSet = new LinkedHashSet<>();
+//
+//        System.out.println("linkedHashSet instanceof linkedHashSet " + (linkedHashSet instanceof LinkedHashSet));
+//        System.out.println("linkedHashSet instanceof HashSet " + (linkedHashSet instanceof HashSet));
+//        System.out.println("linkedHashSet instanceof Set " + (linkedHashSet instanceof Set));
+//        System.out.println("linkedHashSet instanceof Collection " + (linkedHashSet instanceof Collection));
+//        System.out.println("linkedHashSet instanceof Iterable " + (linkedHashSet instanceof Iterable));
+//
+//        System.out.println();
+//
+//        Set<String> treeSet = new TreeSet<>();
+//
+//        System.out.println("treeSet instanceof TreeSet " + (treeSet instanceof TreeSet));
+//        System.out.println("treeSet instanceof SortedSet " + (treeSet instanceof SortedSet));
+//        System.out.println("treeSet instanceof Set " + (treeSet instanceof Set));
+//        System.out.println("treeSet instanceof Collection " + (treeSet instanceof Collection));
+//        System.out.println("treeSet instanceof Iterable " + (treeSet instanceof Iterable));
+//
+//        System.out.println();
     }
 }
 
