@@ -6,70 +6,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Integer[] integersArray = new Integer[] {3300, 400, 100, 700, 900, 600};
+        SortedSet<String> vowelSet = new TreeSet<>();
 
-        Set<Integer> treeSet = new TreeSet<>(Arrays.asList(integersArray));
 
-        System.out.println("\nOrder of integers in a TreeSet (natural order)");
+        vowelSet.add("A");
+        vowelSet.add("E");
+        vowelSet.add("I");
+        vowelSet.add("O");
+        vowelSet.add("U");
 
-        for (Integer integer : treeSet) {
-            System.out.println(integer);
-        }
+        System.out.println("Vowels are: " + vowelSet);
 
-        treeSet.add(null); // java.lang.NullPointerException
+        System.out.println("First vowel: " + vowelSet.first());
+        System.out.println("Last vowel: " + vowelSet.last());
 
-//        String[] carsArray = new String[] {"Volvo", "BMW", "Honda", "Audi", "Mercedes"};
-//
-//        Set<String> hashSet = new HashSet<>(Arrays.asList(carsArray));
-//        Set<String> linkedHashSet = new LinkedHashSet<>(Arrays.asList(carsArray));
-//        Set<String> treeSet = new TreeSet<>(Arrays.asList(carsArray));
-//
-//        System.out.println("Order of car names in a HashSet (random order)");
-//
-//        for (String name : hashSet) {
-//            System.out.println(name);
-//        }
-//
-//        System.out.println("\nOrder of car names in a LinkedHashSet (insertion order)");
-//
-//        for (String name : linkedHashSet) {
-//            System.out.println(name);
-//        }
-//
-//        System.out.println("\nOrder of car names in a TreeSet (natural order)");
-//
-//        for (String name : treeSet) {
-//            System.out.println(name);
-//        }
+        System.out.println();
 
-//        Set<String> hashSet = new HashSet<>();
+        System.out.println("Vowels which come before I: " + vowelSet.headSet("I"));
+        System.out.println("Vowels which come after I (includes I): " + vowelSet.tailSet("I"));
+
+        System.out.println();
+
+        System.out.println("Vowels which comes between E and U (includes E): " + vowelSet.subSet("E", "U"));
+
+        System.out.println();
+
+//        System.out.println("A compareTo B: " + ("A".compareTo("B")));
+//        System.out.println("A compareTo Z: " + ("A".compareTo("Z")));
 //
-//        System.out.println("hashSet instanceof HashSet " + (hashSet instanceof HashSet));
-//        System.out.println("hashSet instanceof Set " + (hashSet instanceof Set));
-//        System.out.println("hashSet instanceof Collection " + (hashSet instanceof Collection));
-//        System.out.println("hashSet instanceof Iterable " + (hashSet instanceof Iterable));
+//        System.out.println("B compareTo A: " + ("B".compareTo("A")));
+//        System.out.println("Z compareTo A: " + ("Z".compareTo("A")));
 //
-//        System.out.println();
+//        System.out.println("L compareTo L: " + ("L".compareTo("L")));
+//        System.out.println("X compareTo X: " + ("X".compareTo("X")));
 //
-//        Set<String> linkedHashSet = new LinkedHashSet<>();
-//
-//        System.out.println("linkedHashSet instanceof linkedHashSet " + (linkedHashSet instanceof LinkedHashSet));
-//        System.out.println("linkedHashSet instanceof HashSet " + (linkedHashSet instanceof HashSet));
-//        System.out.println("linkedHashSet instanceof Set " + (linkedHashSet instanceof Set));
-//        System.out.println("linkedHashSet instanceof Collection " + (linkedHashSet instanceof Collection));
-//        System.out.println("linkedHashSet instanceof Iterable " + (linkedHashSet instanceof Iterable));
-//
-//        System.out.println();
-//
-//        Set<String> treeSet = new TreeSet<>();
-//
-//        System.out.println("treeSet instanceof TreeSet " + (treeSet instanceof TreeSet));
-//        System.out.println("treeSet instanceof SortedSet " + (treeSet instanceof SortedSet));
-//        System.out.println("treeSet instanceof Set " + (treeSet instanceof Set));
-//        System.out.println("treeSet instanceof Collection " + (treeSet instanceof Collection));
-//        System.out.println("treeSet instanceof Iterable " + (treeSet instanceof Iterable));
-//
-//        System.out.println();
+//        System.out.println("A compareTo a: " + ("A".compareTo("a")));
+//        System.out.println("b compareTo B: " + ("b".compareTo("B")));
     }
 }
 
@@ -78,3 +50,10 @@ public class Main {
 
 // Equality checks
 // Performed using the .equals() and .hashCode() method on objects
+
+// Comparing Elements in a TreeSet
+// Objects implement the Comparable interface or the TreeSet uses a separate Comparator
+
+// compareTo()
+// Result is positive, negative, or zero. The magnitude of the values does not matter
+// Only method of the functional interface Comparable
