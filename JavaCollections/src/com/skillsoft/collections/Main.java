@@ -6,42 +6,56 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SortedSet<String> vowelSet = new TreeSet<>();
+        Comparator<String> descendingOrderComparator = new Comparator<String>() {
 
+            @Override
+            public int compare(String o1, String o2) {
+                return o2.compareTo(o1);
+            }
+        };
 
-        vowelSet.add("A");
-        vowelSet.add("E");
-        vowelSet.add("I");
-        vowelSet.add("O");
-        vowelSet.add("U");
+        String[] carsArray = new String[] {"Volvo", "BMW", "Honda", "Audi", "Mercedes"};
+        SortedSet<String> treeSet = new TreeSet<>(descendingOrderComparator);
 
-        System.out.println("Vowels are: " + vowelSet);
+        treeSet.addAll(Arrays.asList(carsArray));
 
-        System.out.println("First vowel: " + vowelSet.first());
-        System.out.println("Last vowel: " + vowelSet.last());
+        for (String name : treeSet) {
+            System.out.println(name);
+        }
 
-        System.out.println();
-
-        System.out.println("Vowels which come before I: " + vowelSet.headSet("I"));
-        System.out.println("Vowels which come after I (includes I): " + vowelSet.tailSet("I"));
-
-        System.out.println();
-
-        System.out.println("Vowels which comes between E and U (includes E): " + vowelSet.subSet("E", "U"));
-
-        System.out.println();
-
-//        System.out.println("A compareTo B: " + ("A".compareTo("B")));
-//        System.out.println("A compareTo Z: " + ("A".compareTo("Z")));
+//        Comparator<Product> productComparator = new Comparator<Product>() {
 //
-//        System.out.println("B compareTo A: " + ("B".compareTo("A")));
-//        System.out.println("Z compareTo A: " + ("Z".compareTo("A")));
+//            @Override
+//            public int compare(Product o1, Product o2) {
+//                int compareName = o1.getName().compareTo(o2.getName());
 //
-//        System.out.println("L compareTo L: " + ("L".compareTo("L")));
-//        System.out.println("X compareTo X: " + ("X".compareTo("X")));
+//                if (compareName != 0) {
+//                    return compareName;
+//                }
 //
-//        System.out.println("A compareTo a: " + ("A".compareTo("a")));
-//        System.out.println("b compareTo B: " + ("b".compareTo("B")));
+//                return o1.getCategory().compareTo(o2.getCategory());
+//            }
+//        };
+//
+////        SortedSet<Product> productSet = new TreeSet<>();
+//        SortedSet<Product> productSet = new TreeSet<>(productComparator); // TreeSet uses Comparator interface to compare Product
+//
+//        Product phone = new Product("iPhone", "Mobiles");
+//        Product tv = new Product("Samsung", "Electronics");
+//        Product jeans = new Product("Levis", "Apparel");
+//        Product watch = new Product("Rolex", "Accessories");
+//
+//        productSet.add(phone); // java.lang.ClassCastException because Product does not implement Comparable interface
+//                            // com.skillsoft.collections.Product cannot be cast to class java.lang.Comparable
+//        productSet.add(tv);
+//        productSet.add(jeans);
+//        productSet.add(watch);
+//
+//        for (Product product : productSet) {
+//            System.out.println(product);
+//        }
+//
+//        System.out.println();
     }
 }
 
@@ -57,3 +71,6 @@ public class Main {
 // compareTo()
 // Result is positive, negative, or zero. The magnitude of the values does not matter
 // Only method of the functional interface Comparable
+
+// Comparator vs. Comparable
+// Comparator allows us to sort objects without modifying the original class

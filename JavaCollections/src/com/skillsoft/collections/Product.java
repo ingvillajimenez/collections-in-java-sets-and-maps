@@ -2,6 +2,7 @@ package com.skillsoft.collections;
 
 import java.util.Objects;
 
+//public class Product implements Comparable<Product> {
 public class Product {
 
     private String name;
@@ -10,6 +11,14 @@ public class Product {
     public Product(String name, String category) {
         this.name = name;
         this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     @Override
@@ -41,4 +50,16 @@ public class Product {
     public int hashCode() {
         return Objects.hash(name, category);
     }
+
+//    @Override
+//    public int compareTo(Product o) {
+//
+//        int compareName = this.name.compareTo(o.name);
+//
+//        if (compareName != 0) {
+//            return compareName;
+//        }
+//
+//        return this.category.compareTo(o.category);
+//    }
 }
