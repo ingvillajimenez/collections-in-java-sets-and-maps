@@ -1,61 +1,85 @@
 package com.skillsoft.collections;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Comparator<String> descendingOrderComparator = new Comparator<String>() {
+        Map<Integer, String> actorsMap = new HashMap<Integer, String>();
 
-            @Override
-            public int compare(String o1, String o2) {
-                return o2.compareTo(o1);
-            }
-        };
+        actorsMap.put(1001, "Tom Hanks");
+        actorsMap.put(1002, "Will Smith");
+        actorsMap.put(1003, "Bruce Willis");
 
-        String[] carsArray = new String[] {"Volvo", "BMW", "Honda", "Audi", "Mercedes"};
-        SortedSet<String> treeSet = new TreeSet<>(descendingOrderComparator);
+        System.out.println("Actors: " + actorsMap);
+        System.out.println();
 
-        treeSet.addAll(Arrays.asList(carsArray));
+        System.out.println("******* Adding elements");
 
-        for (String name : treeSet) {
-            System.out.println(name);
-        }
+        actorsMap.put(1004, "Chris Evans");
+        actorsMap.put(1005, "Brad Pitt");
 
-//        Comparator<Product> productComparator = new Comparator<Product>() {
+        System.out.println("Actors: " + actorsMap);
+        System.out.println();
+
+        System.out.println("***** Retrieving elements");
+
+        System.out.format("Key: %s, Value: %s\n", 1003, actorsMap.get(1003));
+        System.out.format("Key: %s, Value: %s\n", 1001, actorsMap.get(1001));
+
+        System.out.format("Key: %s, Value: %s\n", 1008, actorsMap.get(1008));
+
+        System.out.println("Actors: " + actorsMap);
+        System.out.println();
+
+        System.out.println("***** Deleting elements");
+        System.out.println("Actors (original): " + actorsMap);
+
+        actorsMap.remove(1001);
+        actorsMap.remove(1003);
+
+        System.out.println("Actors: " + actorsMap);
+        System.out.println();
+
+        System.out.println("***** Updating elements");
+        System.out.println("Actors (original): " + actorsMap);
+
+        actorsMap.put(1001, "Aamir Khan");
+        actorsMap.put(1005, "Amitabh Bachchan");
+
+        System.out.println("Actors: " + actorsMap);
+        System.out.println();
+
+//        Map<Integer, String> hashMap = new HashMap<Integer, String>();
 //
-//            @Override
-//            public int compare(Product o1, Product o2) {
-//                int compareName = o1.getName().compareTo(o2.getName());
+//        System.out.println("hashMap instanceof HashMap: " + (hashMap instanceof HashMap));
+//        System.out.println("hashMap instanceof Map: " + (hashMap instanceof Map));
 //
-//                if (compareName != 0) {
-//                    return compareName;
-//                }
+//        System.out.println("hashMap instanceof Collection: " + (hashMap instanceof Collection));
+//        System.out.println("hashMap instanceof Iterable: " + (hashMap instanceof Iterable));
+
+//        Map<Integer, String> actorsMap = new HashMap<Integer, String>();
 //
-//                return o1.getCategory().compareTo(o2.getCategory());
-//            }
-//        };
-//
-////        SortedSet<Product> productSet = new TreeSet<>();
-//        SortedSet<Product> productSet = new TreeSet<>(productComparator); // TreeSet uses Comparator interface to compare Product
-//
-//        Product phone = new Product("iPhone", "Mobiles");
-//        Product tv = new Product("Samsung", "Electronics");
-//        Product jeans = new Product("Levis", "Apparel");
-//        Product watch = new Product("Rolex", "Accessories");
-//
-//        productSet.add(phone); // java.lang.ClassCastException because Product does not implement Comparable interface
-//                            // com.skillsoft.collections.Product cannot be cast to class java.lang.Comparable
-//        productSet.add(tv);
-//        productSet.add(jeans);
-//        productSet.add(watch);
-//
-//        for (Product product : productSet) {
-//            System.out.println(product);
-//        }
+//        System.out.println("Actors map empty? : " + actorsMap.isEmpty());
+//        System.out.println("Actors map size : " + actorsMap.size());
 //
 //        System.out.println();
+//
+//        actorsMap.put(1001, "Tom Hanks");
+//        actorsMap.put(1002, "Will Smith");
+//        actorsMap.put(1003, "Bruce Willis");
+//        actorsMap.put(1004, "Chris Evans");
+//        actorsMap.put(1005, "Brad Pitt");
+//
+//        System.out.println("Actors map empty? (after adding names) : " + actorsMap.isEmpty());
+//        System.out.println("Actors map size (after adding names) : " + actorsMap.size());
+//
+//        System.out.println();
+//
+//        System.out.println("String representation of map: " + actorsMap);
     }
 }
 
@@ -74,3 +98,6 @@ public class Main {
 
 // Comparator vs. Comparable
 // Comparator allows us to sort objects without modifying the original class
+
+// Maps
+// Containers that contain mappings from keys to values
