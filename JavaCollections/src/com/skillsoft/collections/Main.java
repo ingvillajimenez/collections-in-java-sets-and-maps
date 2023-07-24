@@ -1,7 +1,6 @@
 package com.skillsoft.collections;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 
@@ -9,67 +8,89 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Map<Integer, String> lruCache = new LRUCache();
+        Comparator<String> stringLengthComparator = new Comparator<String>() {
 
-        lruCache.put(1784, "The Godfather");
-        lruCache.put(1202, "Titanic");
-        lruCache.put(1503, "Jaws");
-        lruCache.put(1501, "Saving Private Ryan");
-        lruCache.put(2501, "Back to the Future");
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.length() - s2.length();
+            }
+        };
 
-        System.out.println("Added exactly 5 entries\n");
+        SortedMap<String, String> treeMap = new TreeMap<String, String>(stringLengthComparator);
 
-        for (Entry<Integer, String> entry : lruCache.entrySet()) {
+        treeMap.put("Pablo Picasso", "Guarnica");
+        treeMap.put("Salvador Dali", "The Persistence of Memory");
+
+        treeMap.put("Vincent van Gogh", "The Starry Night");
+        treeMap.put("Johannes Vermeer", "Girl with a Pearl Earring");
+
+        treeMap.put("Leonardo da Vinci", "Mona Lisa");
+
+        System.out.println("Entries in the order of the key string length: ");
+
+        for (Entry<String, String> entry : treeMap.entrySet()) {
             System.out.println(entry);
         }
 
-        lruCache.put(3000, "The Parasite");
-        lruCache.put(4000, "It's a Beautiful Life");
-
-        System.out.println("\nOnly the 5 most recently accessed entries will be preserved\n");
-
-        for (Entry<Integer, String> entry : lruCache.entrySet()) {
-            System.out.println(entry);
-        }
-
-        lruCache.get(1503);
-        lruCache.get(2501);
-
-        System.out.println("\nAccessed Jaws and Back to the Future");
-
-        for (Entry<Integer, String> entry : lruCache.entrySet()) {
-            System.out.println(entry);
-        }
-
-//        Map<Integer, String> linkedHashMap = new LinkedHashMap<>(
-//                16, 0.75f, true);
+//        Comparator<String> descendingStringComparator = new Comparator<String>() {
 //
-//        linkedHashMap.put(1784, "The Godfather");
-//        linkedHashMap.put(1202, "Titanic");
-//        linkedHashMap.put(1503, "Jaws");
-//        linkedHashMap.put(1501, "Saving Private Ryan");
+//            @Override
+//            public int compare(String s1, String s2) {
+//                return s1.compareTo(s2) * -1;
+//            }
+//        };
 //
-//        System.out.println("Insertion order since no entry has been accessed yet\n");
+//        SortedMap<String, String> treeMap = new TreeMap<String, String>(descendingStringComparator);
 //
-//        for (Entry<Integer, String> entry : linkedHashMap.entrySet()) {
+//        treeMap.put("Pablo Picasso", "Guarnica");
+//        treeMap.put("Leonardo da Vinci", "Mona Lisa");
+//        treeMap.put("Vincent van Gogh", "The Starry Night");
+//        treeMap.put("Salvador Dali", "The Persistence of Memory");
+//        treeMap.put("Johannes Vermeer", "Girl with a Pearl Earring");
+//
+//        System.out.println("Entries in reverse order: ");
+//
+//        for (Entry<String, String> entry : treeMap.entrySet()) {
+//            System.out.println(entry);
+//        }
+
+//        Comparator<Integer> descendingComparator = new Comparator<Integer>() {
+//
+//            @Override
+//            public int compare(Integer i1, Integer i2) {
+//                return i1.compareTo(i2) * -1;
+//            }
+//        };
+//
+//        SortedMap<Integer, String> treeMap = new TreeMap<Integer, String>(descendingComparator);
+//
+//        treeMap.put(1784, "Back to the future");
+//        treeMap.put(1503, "Titanic");
+//        treeMap.put(1202, "Jaws");
+//        treeMap.put(1501, "Forrest Gump");
+//        treeMap.put(1277, "The Godfather");
+//
+//        System.out.println("Entries in the reverse order: ");
+//
+//        for (Entry<Integer, String> entry : treeMap.entrySet()) {
+//            System.out.println(entry);
+//        }
+
+//        SortedMap<Integer, String> treeMap = new TreeMap<>();
+//
+//        treeMap.put(1784, "Back to the future");
+//        treeMap.put(1503, "Titanic");
+//        treeMap.put(1202, "Jaws");
+//        treeMap.put(1501, "Forrest Gump");
+//        treeMap.put(1277, "The Godfather");
+//
+//        System.out.println("Entries in the natural order: ");
+//
+//        for (Entry<Integer, String> entry : treeMap.entrySet()) {
 //            System.out.println(entry);
 //        }
 //
-//        linkedHashMap.get(1202);
-//
-//        System.out.println("\nAccess order of entries (accessed Titanic) \n");
-//
-//        for (Entry<Integer, String> entry : linkedHashMap.entrySet()) {
-//            System.out.println(entry);
-//        }
-//
-//        linkedHashMap.get(1501);
-//
-//        System.out.println("\nAccess order of entries (accessed Saving Private Ryan)\n");
-//
-//        for (Entry<Integer, String> entry : linkedHashMap.entrySet()) {
-//            System.out.println(entry);
-//        }
+//        treeMap.put(null, "Bob"); // java.lang.NullPointerException
     }
 }
 
