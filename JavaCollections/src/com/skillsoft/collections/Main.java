@@ -8,41 +8,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SortedMap<Book, Double> treeMap = new TreeMap<Book, Double>();
+        SortedMap<Integer, String> treeMap = new TreeMap<Integer, String>();
 
-        treeMap.put(new Book("Catcher in the Rye", "J. D. Salinger"), 4.99);
-        treeMap.put(new Book("Pride and Prejudice", "Jane Austen"), 5.99);
-        treeMap.put(new Book("To Kill a Mockingbird", "Harper Lee"), 3.99);
-        treeMap.put(new Book("The Great Gatsby", "F. Scott Fitzgerald"), 4.49);
+        treeMap.put(1202, "Sam");
+        treeMap.put(1503, "Tom");
+        treeMap.put(1501, "Ronald");
+        treeMap.put(1784, "Ursula");
+        treeMap.put(1277, "Dan");
 
-        System.out.println("Entries in the order of book name: ");
+        System.out.println("employeesMap: " + treeMap);
 
-        for (Entry<Book, Double> entry : treeMap.entrySet()) {
-            System.out.println(entry);
-        }
+        System.out.println("\nFirst key: " + treeMap.firstKey());
+        System.out.println("Last key: " + treeMap.lastKey());
 
-//        Comparator<Book> bookComparator = new Comparator<Book>() {
-//
-//            @Override
-//            public int compare(Book b1, Book b2) {
-//                return b1.getName().toLowerCase().compareTo(b2.getName().toLowerCase());
-//            }
-//        };
-//
-//        SortedMap<Book, Double> treeMap = new TreeMap<Book, Double>(bookComparator);
-//
-//        treeMap.put(new Book("Catcher in the Rye", "J. D. Salinger"), 4.99);
-//        treeMap.put(new Book("catcher in the rye", "J. D. Salinger"), 4.99);
-//
-//        treeMap.put(new Book("Pride and Prejudice", "Jane Austen"), 5.99);
-//        treeMap.put(new Book("To Kill a Mockingbird", "Harper Lee"), 3.99);
-//        treeMap.put(new Book("The Great Gatsby", "F. Scott Fitzgerald"), 4.49);
-//
-//        System.out.println("Entries in the order of book name: ");
-//
-//        for (Entry<Book, Double> entry : treeMap.entrySet()) {
-//            System.out.println(entry);
-//        }
+        System.out.println("\nMap with all keys strictly less than 1501: " + treeMap.headMap(1501));
+        System.out.println("\nMap with all keys greater than or equal to 1503: " + treeMap.tailMap(1503));
+
+        System.out.println("\nMap with all keys greater than or equal to 1277 and less than 1503: " +
+                treeMap.subMap(1277, 1503));
 
     }
 }
