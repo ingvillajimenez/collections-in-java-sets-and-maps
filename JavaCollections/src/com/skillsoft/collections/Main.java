@@ -8,89 +8,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Comparator<String> stringLengthComparator = new Comparator<String>() {
+        SortedMap<Book, Double> treeMap = new TreeMap<Book, Double>();
 
-            @Override
-            public int compare(String s1, String s2) {
-                return s1.length() - s2.length();
-            }
-        };
+        treeMap.put(new Book("Catcher in the Rye", "J. D. Salinger"), 4.99);
+        treeMap.put(new Book("Pride and Prejudice", "Jane Austen"), 5.99);
+        treeMap.put(new Book("To Kill a Mockingbird", "Harper Lee"), 3.99);
+        treeMap.put(new Book("The Great Gatsby", "F. Scott Fitzgerald"), 4.49);
 
-        SortedMap<String, String> treeMap = new TreeMap<String, String>(stringLengthComparator);
+        System.out.println("Entries in the order of book name: ");
 
-        treeMap.put("Pablo Picasso", "Guarnica");
-        treeMap.put("Salvador Dali", "The Persistence of Memory");
-
-        treeMap.put("Vincent van Gogh", "The Starry Night");
-        treeMap.put("Johannes Vermeer", "Girl with a Pearl Earring");
-
-        treeMap.put("Leonardo da Vinci", "Mona Lisa");
-
-        System.out.println("Entries in the order of the key string length: ");
-
-        for (Entry<String, String> entry : treeMap.entrySet()) {
+        for (Entry<Book, Double> entry : treeMap.entrySet()) {
             System.out.println(entry);
         }
 
-//        Comparator<String> descendingStringComparator = new Comparator<String>() {
+//        Comparator<Book> bookComparator = new Comparator<Book>() {
 //
 //            @Override
-//            public int compare(String s1, String s2) {
-//                return s1.compareTo(s2) * -1;
+//            public int compare(Book b1, Book b2) {
+//                return b1.getName().toLowerCase().compareTo(b2.getName().toLowerCase());
 //            }
 //        };
 //
-//        SortedMap<String, String> treeMap = new TreeMap<String, String>(descendingStringComparator);
+//        SortedMap<Book, Double> treeMap = new TreeMap<Book, Double>(bookComparator);
 //
-//        treeMap.put("Pablo Picasso", "Guarnica");
-//        treeMap.put("Leonardo da Vinci", "Mona Lisa");
-//        treeMap.put("Vincent van Gogh", "The Starry Night");
-//        treeMap.put("Salvador Dali", "The Persistence of Memory");
-//        treeMap.put("Johannes Vermeer", "Girl with a Pearl Earring");
+//        treeMap.put(new Book("Catcher in the Rye", "J. D. Salinger"), 4.99);
+//        treeMap.put(new Book("catcher in the rye", "J. D. Salinger"), 4.99);
 //
-//        System.out.println("Entries in reverse order: ");
+//        treeMap.put(new Book("Pride and Prejudice", "Jane Austen"), 5.99);
+//        treeMap.put(new Book("To Kill a Mockingbird", "Harper Lee"), 3.99);
+//        treeMap.put(new Book("The Great Gatsby", "F. Scott Fitzgerald"), 4.49);
 //
-//        for (Entry<String, String> entry : treeMap.entrySet()) {
+//        System.out.println("Entries in the order of book name: ");
+//
+//        for (Entry<Book, Double> entry : treeMap.entrySet()) {
 //            System.out.println(entry);
 //        }
 
-//        Comparator<Integer> descendingComparator = new Comparator<Integer>() {
-//
-//            @Override
-//            public int compare(Integer i1, Integer i2) {
-//                return i1.compareTo(i2) * -1;
-//            }
-//        };
-//
-//        SortedMap<Integer, String> treeMap = new TreeMap<Integer, String>(descendingComparator);
-//
-//        treeMap.put(1784, "Back to the future");
-//        treeMap.put(1503, "Titanic");
-//        treeMap.put(1202, "Jaws");
-//        treeMap.put(1501, "Forrest Gump");
-//        treeMap.put(1277, "The Godfather");
-//
-//        System.out.println("Entries in the reverse order: ");
-//
-//        for (Entry<Integer, String> entry : treeMap.entrySet()) {
-//            System.out.println(entry);
-//        }
-
-//        SortedMap<Integer, String> treeMap = new TreeMap<>();
-//
-//        treeMap.put(1784, "Back to the future");
-//        treeMap.put(1503, "Titanic");
-//        treeMap.put(1202, "Jaws");
-//        treeMap.put(1501, "Forrest Gump");
-//        treeMap.put(1277, "The Godfather");
-//
-//        System.out.println("Entries in the natural order: ");
-//
-//        for (Entry<Integer, String> entry : treeMap.entrySet()) {
-//            System.out.println(entry);
-//        }
-//
-//        treeMap.put(null, "Bob"); // java.lang.NullPointerException
     }
 }
 
