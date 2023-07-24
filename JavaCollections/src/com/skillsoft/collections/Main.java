@@ -6,45 +6,65 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Map<Movie, Float> moviesMap = new HashMap<>();
+        Map<Integer, String> hashMap = new HashMap<Integer, String>();
 
-        System.out.println("**** Keys can be custom objects");
+        hashMap.put(1784, "The Godfather");
+        hashMap.put(1202, "Titanic");
+        hashMap.put(1503, "Jaws");
+        hashMap.put(1501, "Saving Private Ryan");
 
-        moviesMap.put(new Movie("Titanic", "Leonardo DiCaprio"), 8.8f);
-        moviesMap.put(new Movie("Back to the Future", "Michael J. Fox"), 8.3f);
-        moviesMap.put(new Movie("The Godfather", "Al Pacino"), 9.3f);
-        moviesMap.put(new Movie("Casablanca", "Humphrey Bogart"), 8.9f);
+        System.out.println("\n*****Order of entries in a HashMap (random)");
 
-        for (Map.Entry<Movie, Float> entry : moviesMap.entrySet()) {
-            System.out.format("Key: %s, Value: %.1f\n", entry.getKey(), entry.getValue());
+        for (Map.Entry<Integer, String> entry : hashMap.entrySet()) {
+            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
         }
 
-        System.out.println();
+        Map<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>();
 
-        System.out.println("**** Duplicate entries for the same movie");
+        linkedHashMap.put(1784, "The Godfather");
+        linkedHashMap.put(1202, "Titanic");
+        linkedHashMap.put(1503, "Jaws");
+        linkedHashMap.put(1501, "Saving Private Ryan");
 
-        Movie anotherGodfather = new Movie("The Godfather", "Al Pacino");
+        System.out.println("\n******Order of entries in a LinkedHashMap (insertion order)");
 
-        moviesMap.put(anotherGodfather, 5.4f);
-
-        for (Map.Entry<Movie, Float> entry : moviesMap.entrySet()) {
-            System.out.format("Key: %s, Value: %.1f\n", entry.getKey(), entry.getValue());
+        for (Map.Entry<Integer, String> entry : linkedHashMap.entrySet()) {
+            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
         }
 
-//        Map<Integer, Movie> moviesMap = new HashMap<>();
+        Map<Integer, String> treeMap = new TreeMap<Integer, String>();
+
+        treeMap.put(1784, "The Godfather");
+        treeMap.put(1202, "Titanic");
+        treeMap.put(1503, "Jaws");
+        treeMap.put(1501, "Saving Private Ryan");
+
+        System.out.println("\n*****Order of entries in a TreeMap (natural order of keys)");
+
+        for (Map.Entry<Integer, String> entry : treeMap.entrySet()) {
+            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+        }
+
+//        Map<Integer, String> hashMap = new HashMap<Integer, String>();
 //
-//        System.out.println("**** Values can be custom objects");
+//        System.out.println("hashMap instanceof HashMap " + (hashMap instanceof HashMap));
+//        System.out.println("hashMap instanceof Map " + (hashMap instanceof Map));
 //
-//        moviesMap.put(1202, new Movie("Titanic", "Leonardo DiCaprio"));
-//        moviesMap.put(1501, new Movie("Back to the Future", "Michael J. Fox"));
-//        moviesMap.put(1884, new Movie("The Godfather", "Al Pacino"));
-//        moviesMap.put(2932, new Movie("Casablanca", "Humphrey Bogart"));
+//        Map<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>();
 //
-//        for (Map.Entry<Integer, Movie> entry : moviesMap.entrySet()) {
-//            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
-//        }
+//        System.out.println("\nlinkedHashMap instanceof LinkedHashMap " +
+//                (linkedHashMap instanceof LinkedHashMap));
+//        System.out.println("linkedHashMap instanceof HashMap " +
+//                (linkedHashMap instanceof HashMap));
+//        System.out.println("linkedHashMap instanceof Map " +
+//                (linkedHashMap  instanceof Map));
 //
-//        System.out.println();
+//        Map<Integer, String> treeMap = new TreeMap<Integer, String>();
+//
+//        System.out.println("\ntreeMap instanceof TreeMap " + (treeMap instanceof TreeMap));
+//        System.out.println("treeMap instanceof SortedMap " + (treeMap instanceof SortedMap));
+//        System.out.println("treeMap instanceof Map " + (treeMap instanceof Map));
+
     }
 }
 
