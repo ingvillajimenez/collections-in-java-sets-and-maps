@@ -1,85 +1,86 @@
 package com.skillsoft.collections;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Map<Integer, String> actorsMap = new HashMap<Integer, String>();
+        Map<Integer, String> moviesMap = new HashMap<>();
 
-        actorsMap.put(1001, "Tom Hanks");
-        actorsMap.put(1002, "Will Smith");
-        actorsMap.put(1003, "Bruce Willis");
+        System.out.println("**** Any number of nulls allowed in values");
 
-        System.out.println("Actors: " + actorsMap);
+        moviesMap.put(1202, "Titanic");
+        moviesMap.put(1203, null);
+        moviesMap.put(1501, "Back to the Future");
+        moviesMap.put(1884, "The Godfather");
+        moviesMap.put(2932, "Casablanca");
+        moviesMap.put(6929, null);
+
+        for (Map.Entry<Integer, String> entry : moviesMap.entrySet()) {
+            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+        }
+
         System.out.println();
 
-        System.out.println("******* Adding elements");
+        System.out.println("**** The key can be null as well, considered unique");
 
-        actorsMap.put(1004, "Chris Evans");
-        actorsMap.put(1005, "Brad Pitt");
+        moviesMap.put(null, "Jaws");
 
-        System.out.println("Actors: " + actorsMap);
+        for (Map.Entry<Integer, String> entry : moviesMap.entrySet()) {
+            System.out.format("Key: %d, Values: %s\n", entry.getKey(), entry.getValue());
+        }
+
         System.out.println();
 
-        System.out.println("***** Retrieving elements");
+        System.out.println("**** Only one null key allowed in any map");
 
-        System.out.format("Key: %s, Value: %s\n", 1003, actorsMap.get(1003));
-        System.out.format("Key: %s, Value: %s\n", 1001, actorsMap.get(1001));
+        moviesMap.put(null, "The Godfather II");
 
-        System.out.format("Key: %s, Value: %s\n", 1008, actorsMap.get(1008));
+        for (Map.Entry<Integer, String> entry : moviesMap.entrySet()) {
+            System.out.format("Key: %d, Values: %s\n", entry.getKey(), entry.getValue());
+        }
 
-        System.out.println("Actors: " + actorsMap);
         System.out.println();
 
-        System.out.println("***** Deleting elements");
-        System.out.println("Actors (original): " + actorsMap);
-
-        actorsMap.remove(1001);
-        actorsMap.remove(1003);
-
-        System.out.println("Actors: " + actorsMap);
-        System.out.println();
-
-        System.out.println("***** Updating elements");
-        System.out.println("Actors (original): " + actorsMap);
-
-        actorsMap.put(1001, "Aamir Khan");
-        actorsMap.put(1005, "Amitabh Bachchan");
-
-        System.out.println("Actors: " + actorsMap);
-        System.out.println();
-
-//        Map<Integer, String> hashMap = new HashMap<Integer, String>();
+//        Map<Integer, String> moviesMap = new HashMap<>();
 //
-//        System.out.println("hashMap instanceof HashMap: " + (hashMap instanceof HashMap));
-//        System.out.println("hashMap instanceof Map: " + (hashMap instanceof Map));
+//        moviesMap.put(1202, "Titanic");
+//        moviesMap.put(1203, "Jaws");
+//        moviesMap.put(1501, "Back to the Future");
+//        moviesMap.put(1884, "The Godfather");
+//        moviesMap.put(2932, "Casablanca");
+//        moviesMap.put(6929, "Titanic");
 //
-//        System.out.println("hashMap instanceof Collection: " + (hashMap instanceof Collection));
-//        System.out.println("hashMap instanceof Iterable: " + (hashMap instanceof Iterable));
-
-//        Map<Integer, String> actorsMap = new HashMap<Integer, String>();
+//        // NOTE: Java Map implementations returns the same collection object each
+//        // time when we access the collection view of a map
+//        Set<Map.Entry<Integer, String>> entrySet = moviesMap.entrySet();
 //
-//        System.out.println("Actors map empty? : " + actorsMap.isEmpty());
-//        System.out.println("Actors map size : " + actorsMap.size());
+//        for (Map.Entry<Integer, String> entry : entrySet) {
+//            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+//        }
 //
-//        System.out.println();
+//        for (Map.Entry<Integer, String> entry : entrySet) {
 //
-//        actorsMap.put(1001, "Tom Hanks");
-//        actorsMap.put(1002, "Will Smith");
-//        actorsMap.put(1003, "Bruce Willis");
-//        actorsMap.put(1004, "Chris Evans");
-//        actorsMap.put(1005, "Brad Pitt");
+//            if (entry.getKey() == 1884) {
+//                entry.setValue("The Godfather II");
+//            }
+//        }
+//        System.out.println("\nSet view of the entries (updated): " + entrySet);
 //
-//        System.out.println("Actors map empty? (after adding names) : " + actorsMap.isEmpty());
-//        System.out.println("Actors map size (after adding names) : " + actorsMap.size());
 //
-//        System.out.println();
+//        Set<Integer> keySet = moviesMap.keySet();
 //
-//        System.out.println("String representation of map: " + actorsMap);
+//        System.out.println("\nSet view of keys (will not have duplicates): " + keySet);
+//
+//        for (Integer key : keySet) {
+//            System.out.println(key + " - " + moviesMap.get(key));
+//        }
+//
+//
+//        Collection<String> values = moviesMap.values();
+//
+//        System.out.println("\nCollection view of values (may contain duplicates): " + values);
     }
 }
 
