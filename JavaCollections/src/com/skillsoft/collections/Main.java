@@ -6,81 +6,45 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Map<Integer, String> moviesMap = new HashMap<>();
+        Map<Movie, Float> moviesMap = new HashMap<>();
 
-        System.out.println("**** Any number of nulls allowed in values");
+        System.out.println("**** Keys can be custom objects");
 
-        moviesMap.put(1202, "Titanic");
-        moviesMap.put(1203, null);
-        moviesMap.put(1501, "Back to the Future");
-        moviesMap.put(1884, "The Godfather");
-        moviesMap.put(2932, "Casablanca");
-        moviesMap.put(6929, null);
+        moviesMap.put(new Movie("Titanic", "Leonardo DiCaprio"), 8.8f);
+        moviesMap.put(new Movie("Back to the Future", "Michael J. Fox"), 8.3f);
+        moviesMap.put(new Movie("The Godfather", "Al Pacino"), 9.3f);
+        moviesMap.put(new Movie("Casablanca", "Humphrey Bogart"), 8.9f);
 
-        for (Map.Entry<Integer, String> entry : moviesMap.entrySet()) {
-            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+        for (Map.Entry<Movie, Float> entry : moviesMap.entrySet()) {
+            System.out.format("Key: %s, Value: %.1f\n", entry.getKey(), entry.getValue());
         }
 
         System.out.println();
 
-        System.out.println("**** The key can be null as well, considered unique");
+        System.out.println("**** Duplicate entries for the same movie");
 
-        moviesMap.put(null, "Jaws");
+        Movie anotherGodfather = new Movie("The Godfather", "Al Pacino");
 
-        for (Map.Entry<Integer, String> entry : moviesMap.entrySet()) {
-            System.out.format("Key: %d, Values: %s\n", entry.getKey(), entry.getValue());
+        moviesMap.put(anotherGodfather, 5.4f);
+
+        for (Map.Entry<Movie, Float> entry : moviesMap.entrySet()) {
+            System.out.format("Key: %s, Value: %.1f\n", entry.getKey(), entry.getValue());
         }
 
-        System.out.println();
-
-        System.out.println("**** Only one null key allowed in any map");
-
-        moviesMap.put(null, "The Godfather II");
-
-        for (Map.Entry<Integer, String> entry : moviesMap.entrySet()) {
-            System.out.format("Key: %d, Values: %s\n", entry.getKey(), entry.getValue());
-        }
-
-        System.out.println();
-
-//        Map<Integer, String> moviesMap = new HashMap<>();
+//        Map<Integer, Movie> moviesMap = new HashMap<>();
 //
-//        moviesMap.put(1202, "Titanic");
-//        moviesMap.put(1203, "Jaws");
-//        moviesMap.put(1501, "Back to the Future");
-//        moviesMap.put(1884, "The Godfather");
-//        moviesMap.put(2932, "Casablanca");
-//        moviesMap.put(6929, "Titanic");
+//        System.out.println("**** Values can be custom objects");
 //
-//        // NOTE: Java Map implementations returns the same collection object each
-//        // time when we access the collection view of a map
-//        Set<Map.Entry<Integer, String>> entrySet = moviesMap.entrySet();
+//        moviesMap.put(1202, new Movie("Titanic", "Leonardo DiCaprio"));
+//        moviesMap.put(1501, new Movie("Back to the Future", "Michael J. Fox"));
+//        moviesMap.put(1884, new Movie("The Godfather", "Al Pacino"));
+//        moviesMap.put(2932, new Movie("Casablanca", "Humphrey Bogart"));
 //
-//        for (Map.Entry<Integer, String> entry : entrySet) {
+//        for (Map.Entry<Integer, Movie> entry : moviesMap.entrySet()) {
 //            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
 //        }
 //
-//        for (Map.Entry<Integer, String> entry : entrySet) {
-//
-//            if (entry.getKey() == 1884) {
-//                entry.setValue("The Godfather II");
-//            }
-//        }
-//        System.out.println("\nSet view of the entries (updated): " + entrySet);
-//
-//
-//        Set<Integer> keySet = moviesMap.keySet();
-//
-//        System.out.println("\nSet view of keys (will not have duplicates): " + keySet);
-//
-//        for (Integer key : keySet) {
-//            System.out.println(key + " - " + moviesMap.get(key));
-//        }
-//
-//
-//        Collection<String> values = moviesMap.values();
-//
-//        System.out.println("\nCollection view of values (may contain duplicates): " + values);
+//        System.out.println();
     }
 }
 
