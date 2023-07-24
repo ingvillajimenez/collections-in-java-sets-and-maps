@@ -1,70 +1,75 @@
 package com.skillsoft.collections;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Map<Integer, String> hashMap = new HashMap<Integer, String>();
+        Map<Integer, String> lruCache = new LRUCache();
 
-        hashMap.put(1784, "The Godfather");
-        hashMap.put(1202, "Titanic");
-        hashMap.put(1503, "Jaws");
-        hashMap.put(1501, "Saving Private Ryan");
+        lruCache.put(1784, "The Godfather");
+        lruCache.put(1202, "Titanic");
+        lruCache.put(1503, "Jaws");
+        lruCache.put(1501, "Saving Private Ryan");
+        lruCache.put(2501, "Back to the Future");
 
-        System.out.println("\n*****Order of entries in a HashMap (random)");
+        System.out.println("Added exactly 5 entries\n");
 
-        for (Map.Entry<Integer, String> entry : hashMap.entrySet()) {
-            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+        for (Entry<Integer, String> entry : lruCache.entrySet()) {
+            System.out.println(entry);
         }
 
-        Map<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>();
+        lruCache.put(3000, "The Parasite");
+        lruCache.put(4000, "It's a Beautiful Life");
 
-        linkedHashMap.put(1784, "The Godfather");
-        linkedHashMap.put(1202, "Titanic");
-        linkedHashMap.put(1503, "Jaws");
-        linkedHashMap.put(1501, "Saving Private Ryan");
+        System.out.println("\nOnly the 5 most recently accessed entries will be preserved\n");
 
-        System.out.println("\n******Order of entries in a LinkedHashMap (insertion order)");
-
-        for (Map.Entry<Integer, String> entry : linkedHashMap.entrySet()) {
-            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+        for (Entry<Integer, String> entry : lruCache.entrySet()) {
+            System.out.println(entry);
         }
 
-        Map<Integer, String> treeMap = new TreeMap<Integer, String>();
+        lruCache.get(1503);
+        lruCache.get(2501);
 
-        treeMap.put(1784, "The Godfather");
-        treeMap.put(1202, "Titanic");
-        treeMap.put(1503, "Jaws");
-        treeMap.put(1501, "Saving Private Ryan");
+        System.out.println("\nAccessed Jaws and Back to the Future");
 
-        System.out.println("\n*****Order of entries in a TreeMap (natural order of keys)");
-
-        for (Map.Entry<Integer, String> entry : treeMap.entrySet()) {
-            System.out.format("Key: %d, Value: %s\n", entry.getKey(), entry.getValue());
+        for (Entry<Integer, String> entry : lruCache.entrySet()) {
+            System.out.println(entry);
         }
 
-//        Map<Integer, String> hashMap = new HashMap<Integer, String>();
+//        Map<Integer, String> linkedHashMap = new LinkedHashMap<>(
+//                16, 0.75f, true);
 //
-//        System.out.println("hashMap instanceof HashMap " + (hashMap instanceof HashMap));
-//        System.out.println("hashMap instanceof Map " + (hashMap instanceof Map));
+//        linkedHashMap.put(1784, "The Godfather");
+//        linkedHashMap.put(1202, "Titanic");
+//        linkedHashMap.put(1503, "Jaws");
+//        linkedHashMap.put(1501, "Saving Private Ryan");
 //
-//        Map<Integer, String> linkedHashMap = new LinkedHashMap<Integer, String>();
+//        System.out.println("Insertion order since no entry has been accessed yet\n");
 //
-//        System.out.println("\nlinkedHashMap instanceof LinkedHashMap " +
-//                (linkedHashMap instanceof LinkedHashMap));
-//        System.out.println("linkedHashMap instanceof HashMap " +
-//                (linkedHashMap instanceof HashMap));
-//        System.out.println("linkedHashMap instanceof Map " +
-//                (linkedHashMap  instanceof Map));
+//        for (Entry<Integer, String> entry : linkedHashMap.entrySet()) {
+//            System.out.println(entry);
+//        }
 //
-//        Map<Integer, String> treeMap = new TreeMap<Integer, String>();
+//        linkedHashMap.get(1202);
 //
-//        System.out.println("\ntreeMap instanceof TreeMap " + (treeMap instanceof TreeMap));
-//        System.out.println("treeMap instanceof SortedMap " + (treeMap instanceof SortedMap));
-//        System.out.println("treeMap instanceof Map " + (treeMap instanceof Map));
-
+//        System.out.println("\nAccess order of entries (accessed Titanic) \n");
+//
+//        for (Entry<Integer, String> entry : linkedHashMap.entrySet()) {
+//            System.out.println(entry);
+//        }
+//
+//        linkedHashMap.get(1501);
+//
+//        System.out.println("\nAccess order of entries (accessed Saving Private Ryan)\n");
+//
+//        for (Entry<Integer, String> entry : linkedHashMap.entrySet()) {
+//            System.out.println(entry);
+//        }
     }
 }
 
@@ -86,3 +91,9 @@ public class Main {
 
 // Maps
 // Containers that contain mappings from keys to values
+
+// Cache
+// Smaller sized faster store for quick look ups of commonly used data
+
+// LRU (Least Recently Used) Cache
+// Keeps around data that is frequently accessed and evicts data that is rarely accessed
